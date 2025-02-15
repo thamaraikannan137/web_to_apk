@@ -12,12 +12,10 @@ workflows:
         script: flutter pub get
       - name: Build APK
         script: flutter build apk --dart-define=WEB_URL=$WEB_URL
-      - name: Build AAB
-        script: flutter build appbundle --dart-define=WEB_URL=$WEB_URL
+
     artifacts:
       - build/**/outputs/apk/**/*.apk
-      - build/**/outputs/**/*.aab
-      - build/**/outputs/**/mapping.txt
+
     publishing:
       email:
         recipients:
