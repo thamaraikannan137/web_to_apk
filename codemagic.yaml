@@ -15,7 +15,7 @@ workflows:
       - name: Build AAB
         script: flutter build appbundle --dart-define=WEB_URL=$WEB_URL
     artifacts:
-      - build/**/outputs/**/*.apk
+      - build/**/outputs/apk/**/*.apk
       - build/**/outputs/**/*.aab
       - build/**/outputs/**/mapping.txt
     publishing:
