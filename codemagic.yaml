@@ -1,19 +1,22 @@
 workflows:
-  flutter-build-apk:
-    name: Flutter Build APK
+  flutter-build-android:
+    name: Flutter Build Android (APK & AAB)
     max_build_duration: 60
     instance_type: mac_mini_m1
     environment:
       flutter: stable
       vars:
-        WEB_URL: "https://flutter.dev"  # Default URL, will be replaced later
+        WEB_URL: "https://flutter.dev"
     scripts:
       - name: Get dependencies
         script: flutter pub get
       - name: Build APK
         script: flutter build apk --dart-define=WEB_URL=$WEB_URL
+      - name: Build AAB
+        script: flutter build appbundle --dart-define=WEB_URL=$WEB_URL
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
+      - build/app/outputs/bundle/release/app-release.aab
     publishing:
       email:
         recipients:
