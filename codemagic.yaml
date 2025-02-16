@@ -1,7 +1,7 @@
 definitions:
   mac_mini_m1: &mac_mini_m1
     instance_type: mac_mini_m1
-    max_build_duration: 30
+    max_build_duration: 60
 
   environment:
     app_details:
@@ -10,7 +10,8 @@ definitions:
         ORG_NAME: $ORG_NAME
         SPLASH: $SPLASH
         LOGO_URL: $LOGO_URL
-        WEBSITE_URL: $WEBSITE_URL
+        $WEB_URL: $WEB_URL
+        url: $WEB_URL
 
   artifacts:
     #- &ipa_file build/ios/ipa/*.ipa
@@ -51,12 +52,12 @@ definitions:
     - &build_abb
       name: Build ABB
       script: |
-        flutter build appbundle --release --dart-define="URL=$url"
+        flutter build appbundle --release --dart-define=WEB_URL=$WEB_URL
 
     - &build_apk
       name: Build APK
       script: |
-        flutter build apk --release --dart-define="URL=$url"
+        flutter build apk --release --dart-define=WEB_URL=$WEB_URL
     
 
 workflows:

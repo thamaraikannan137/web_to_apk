@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  String webUrl = const String.fromEnvironment('WEBSITE_URL',
+  String webUrl = const String.fromEnvironment('WEB_URL',
       defaultValue: 'https://flutter.dev');
   runApp(MyApp(webUrl: webUrl));
 }
