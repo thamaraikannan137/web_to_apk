@@ -10,7 +10,7 @@ definitions:
         ORG_NAME: $ORG_NAME
         SPLASH: $SPLASH
         LOGO_URL: $LOGO_URL
-        $WEB_URL: $WEB_URL
+        WEB_URL: $WEB_URL
         url: $WEB_URL
 
   artifacts:
@@ -40,8 +40,14 @@ definitions:
     - &get_logo
       name: Get logo image from logoUrl
       script: |
+        mkdir -p assets/images/
         wget -O assets/images/logo.png $LOGO_URL
         flutter pub get
+
+    - &set_launcher_icons
+      name: Generate Launcher Icons
+      script: |
+        flutter pub run flutter_launcher_icons:main
 
     - &change_bundle_name
       name: Change bundle name
@@ -76,6 +82,7 @@ workflows:
       scripts:
         - *pub_get
         - *get_logo
+        - *set_launcher_icons
         - *change_bundle_name
         - *change_app_name
         - *build_abb
