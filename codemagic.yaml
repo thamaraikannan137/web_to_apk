@@ -10,7 +10,7 @@ definitions:
         ORG_NAME: $ORG_NAME
         SPLASH: $SPLASH
         LOGO_URL: $LOGO_URL
-        WEB_URL: $WEB_URL
+        $WEB_URL: $WEB_URL
         url: $WEB_URL
 
   artifacts:
