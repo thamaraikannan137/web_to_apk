@@ -2,15 +2,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:web_to_apk/api/firebase_api.dart';
+import 'api/firebase_api.dart';
 
 WebViewEnvironment? webViewEnvironment;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await Firebase.initializeApp();
   String webUrl = const String.fromEnvironment('WEB_URL',
       defaultValue: 'https://flutter.dev');
-  await Firebase.initializeApp();
+
   await FirebaseApi().initNotifications();
   runApp(MyApp(webUrl: webUrl));
 }

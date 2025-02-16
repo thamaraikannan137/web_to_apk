@@ -10,7 +10,7 @@ definitions:
         ORG_NAME: $ORG_NAME
         SPLASH: $SPLASH
         LOGO_URL: $LOGO_URL
-        $WEB_URL: $WEB_URL
+        WEB_URL: $WEB_URL
         url: $WEB_URL
 
   artifacts:
@@ -36,6 +36,13 @@ definitions:
       name: Get packages
       script: |    
         flutter pub get
+
+    - &debug_env
+      name: Debug Environment Variables
+      script: |
+        echo "APP_NAME: $APP_NAME"
+        echo "ORG_NAME: $ORG_NAME"
+        echo "WEB_URL: $WEB_URL"
 
     - &get_logo
       name: Get logo image from logoUrl
@@ -81,6 +88,7 @@ workflows:
         flutter: stable
       scripts:
         - *pub_get
+        - *debug_env
         - *get_logo
         - *set_launcher_icons
         - *change_bundle_name
