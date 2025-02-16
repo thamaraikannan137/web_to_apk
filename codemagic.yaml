@@ -40,13 +40,13 @@ definitions:
     - &change_bundle_name
       name: Change bundle name
       script: |
-        flutter pub run rename --bundleId "$ORG_NAME.$APP_NAME"
+        flutter pub run rename setBundleId  "$ORG_NAME.$APP_NAME"
         flutter pub get
 
     - &change_app_name
       name: Change app name
       script: |
-        flutter pub run rename --appname $appName
+        flutter pub run rename setAppName  $appName
         flutter pub get
 
     - &build_abb
