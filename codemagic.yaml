@@ -37,6 +37,12 @@ definitions:
       script: |    
         flutter pub get
 
+    - &get_logo
+      name: Get logo image from logoUrl
+      script: |
+        wget -O assets/images/logo.png $LOGO_URL
+        flutter pub get
+
     - &change_bundle_name
       name: Change bundle name
       script: |
@@ -69,6 +75,7 @@ workflows:
         flutter: stable
       scripts:
         - *pub_get
+        - *get_logo
         - *change_bundle_name
         - *change_app_name
         - *build_abb
