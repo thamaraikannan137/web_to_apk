@@ -33,8 +33,7 @@ definitions:
   scripts:
     - &pub_get
       name: Get packages
-      script: |
-        flutter packages pub get
+      script: |    
         flutter pub get
 
     - &change_bundle_name
