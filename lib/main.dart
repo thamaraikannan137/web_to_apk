@@ -1,10 +1,44 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'firebase_api.dart';
 
 WebViewEnvironment? webViewEnvironment;
+
+Future<void> handleBackgroundmessage(RemoteMessage message) async {
+  print('$message');
+  print('title : ${message.notification?.title}');
+  print('body : ${message.notification?.body}');
+  print('paylaod : ${message.data}');
+}
+
+Future<void> initPushNotifications() async {
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+      alert: true, badge: true, sound: true);
+  FirebaseMessaging.instance.getInitialMessage().then(handleMessage);
+  FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
+  FirebaseMessaging.onBackgroundMessage(handleBackgroundmessage);
+}
+
+void handleMessage(RemoteMessage? message) {
+  print('>>>>>>>>>>');
+  if (message == null) return;
+  print('=============================================');
+  // navigatorKey.currentState
+  //     ?.pushNamed(NotificationScreen.route, arguments: message);
+}
+
+class FirebaseApi {
+  final _firebaseMessaging = FirebaseMessaging.instance;
+
+  Future initNotifications() async {
+    await _firebaseMessaging.requestPermission();
+    final fcmToken = await _firebaseMessaging.getToken();
+    print("Token : $fcmToken");
+    initPushNotifications();
+  }
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
