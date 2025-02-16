@@ -46,7 +46,7 @@ definitions:
     - &change_app_name
       name: Change app name
       script: |
-        flutter pub run rename setAppName --value $appName
+        flutter pub run rename setAppName --value "$appName"
         flutter pub get
 
     - &build_abb
