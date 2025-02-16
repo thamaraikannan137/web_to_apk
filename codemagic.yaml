@@ -12,6 +12,7 @@ definitions:
         LOGO_URL: $LOGO_URL
         WEB_URL: $WEB_URL
         url: $WEB_URL
+        firebase_config_android: $firebase_config_android
 
   artifacts:
     #- &ipa_file build/ios/ipa/*.ipa
@@ -43,6 +44,12 @@ definitions:
         echo "APP_NAME: $APP_NAME"
         echo "ORG_NAME: $ORG_NAME"
         echo "WEB_URL: $WEB_URL"
+
+    - &google_json
+      name: Get firebase config for android from Url
+      script: |
+          wget -O android/app/google-services.json $firebase_config_android
+          flutter pub get
 
     - &get_logo
       name: Get logo image from logoUrl
@@ -93,6 +100,7 @@ workflows:
         - *set_launcher_icons
         - *change_bundle_name
         - *change_app_name
+        - *google_json
         - *build_abb
         - *build_apk
       artifacts:
