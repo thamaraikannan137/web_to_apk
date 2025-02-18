@@ -39,6 +39,7 @@ dependencies:
   flutter_inappwebview: ^6.0.0
   firebase_messaging: ^15.2.2
   firebase_core: ^3.11.0
+  flutter_native_splash: ^2.4.4
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +57,19 @@ flutter_launcher_icons:
   ios: true
   image_path: "assets/images/logo.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/splash.png
+  android_gravity: fill
+  ios_content_mode: scaleAspectFit
+  fullscreen: true
+  branding: assets/images/splash.png
+  branding_mode: bottom
+  android12:
+    color: "#ffffff"
+    image: assets/images/splash.png
+    icon_background_color: "#FFFFFF"
 
 flutter:
   uses-material-design: true
