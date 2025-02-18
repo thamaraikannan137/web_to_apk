@@ -66,10 +66,7 @@ flutter_native_splash:
   fullscreen: true
   branding: assets/images/splash.png
   branding_mode: bottom
-  android12:
-    color: "#ffffff"
-    image: assets/images/splash.png
-    icon_background_color: "#FFFFFF"
+
 
 flutter:
   uses-material-design: true
