@@ -59,6 +59,12 @@ definitions:
         wget -O assets/images/logo.png $LOGO_URL
         flutter pub get
 
+    - &get_splash
+      name: Get splash screen image from splash image from Url
+      script: |
+        wget -O assets/images/splash.png $splash
+        flutter pub get
+
     - &set_launcher_icons
       name: Generate Launcher Icons
       script: |
@@ -98,6 +104,7 @@ workflows:
         - *pub_get
         - *debug_env
         - *get_logo
+        - *get_splash
         - *set_launcher_icons
         - *change_bundle_name
         - *change_app_name

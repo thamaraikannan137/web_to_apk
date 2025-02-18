@@ -33,9 +33,12 @@ class FirebaseApi {
   final _firebaseMessaging = FirebaseMessaging.instance;
 
   Future initNotifications() async {
-    await _firebaseMessaging.requestPermission();
-    final fcmToken = await _firebaseMessaging.getToken();
-    print("Token : $fcmToken");
+    NotificationSettings settings =
+        await _firebaseMessaging.requestPermission();
+    if (settings.authorizationStatus == AuthorizationStatus.authorized) {}
+    // final fcmToken = await _firebaseMessaging.getToken();
+    // print("Token : $fcmToken");
+    await _firebaseMessaging.subscribeToTopic('web_to_apk');
     initPushNotifications();
   }
 }
