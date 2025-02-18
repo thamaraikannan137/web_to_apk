@@ -63,6 +63,7 @@ definitions:
     - &get_splash
       name: Get splash screen image from splash image from Url
       script: |
+        mkdir -p assets/images/
         wget -O assets/images/splash.png $splash
         flutter pub get
 
