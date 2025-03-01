@@ -45,10 +45,10 @@ class FirebaseApi {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  await FirebaseApi().initNotifications();
+  // await Firebase.initializeApp();
+  // await FirebaseApi().initNotifications();
   String webUrl = const String.fromEnvironment('WEB_URL',
-      defaultValue: 'https://flutter.dev');
+      defaultValue: 'https://esolutionsfirst.com/');
 
   runApp(MyApp(webUrl: webUrl));
 }
