@@ -8,8 +8,8 @@ definitions:
       vars:
         APP_NAME: $APP_NAME
         ORG_NAME: $ORG_NAME
-        SPLASH: $SPLASH
-        LOGO_URL: $LOGO_URL
+#        SPLASH: $SPLASH
+#        LOGO_URL: $LOGO_URL
         WEB_URL: $WEB_URL
         url: $WEB_URL
 #        firebase_config_android: $firebase_config_android
@@ -44,7 +44,7 @@ definitions:
         echo "APP_NAME: $APP_NAME"
         echo "ORG_NAME: $ORG_NAME"
         echo "WEB_URL: $WEB_URL"
-        echo "sSPLASH: $SPLASH"
+#        echo "sSPLASH: $SPLASH"
 
 #    - &google_json
 #      name: Get firebase config for android from Url
