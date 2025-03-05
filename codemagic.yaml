@@ -98,7 +98,7 @@ definitions:
     - &build_apk
       name: Build APK
       script: |
-        flutter build apk --release --dart-define=WEB_URL=$WEB_URL
+        flutter build apk --release --dart-define=WEB_URL="$WEB_URL"
     
 
 workflows:
