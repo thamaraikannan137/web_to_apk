@@ -48,7 +48,7 @@ void main() async {
   // await Firebase.initializeApp();
   // await FirebaseApi().initNotifications();
   String webUrl = const String.fromEnvironment('WEB_URL',
-      defaultValue: 'https://esolutionsfirst.com/');
+      defaultValue: 'https://pixaware.co/');
 
   runApp(MyApp(webUrl: webUrl));
 }
@@ -80,25 +80,25 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-
-    pullToRefreshController = kIsWeb ||
-            ![TargetPlatform.iOS, TargetPlatform.android]
-                .contains(defaultTargetPlatform)
-        ? null
-        : PullToRefreshController(
-            settings: PullToRefreshSettings(
-              color: Colors.blue,
-            ),
-            onRefresh: () async {
-              if (defaultTargetPlatform == TargetPlatform.android) {
-                webViewController?.reload();
-              } else if (defaultTargetPlatform == TargetPlatform.iOS) {
-                webViewController?.loadUrl(
-                    urlRequest:
-                        URLRequest(url: await webViewController?.getUrl()));
-              }
-            },
-          );
+    //
+    // pullToRefreshController = kIsWeb ||
+    //         ![TargetPlatform.iOS, TargetPlatform.android]
+    //             .contains(defaultTargetPlatform)
+    //     ? null
+    //     : PullToRefreshController(
+    //         settings: PullToRefreshSettings(
+    //           color: Colors.blue,
+    //         ),
+    //         onRefresh: () async {
+    //           if (defaultTargetPlatform == TargetPlatform.android) {
+    //             webViewController?.reload();
+    //           } else if (defaultTargetPlatform == TargetPlatform.iOS) {
+    //             webViewController?.loadUrl(
+    //                 urlRequest:
+    //                     URLRequest(url: await webViewController?.getUrl()));
+    //           }
+    //         },
+    //       );
   }
 
   Widget build(BuildContext context) {
