@@ -9,7 +9,7 @@ definitions:
         APP_NAME: $APP_NAME
         ORG_NAME: $ORG_NAME
 #        SPLASH: $SPLASH
-#        LOGO_URL: $LOGO_URL
+        LOGO_URL: $LOGO_URL
         WEB_URL: $WEB_URL
         url: $WEB_URL
 #        firebase_config_android: $firebase_config_android
@@ -53,24 +53,24 @@ definitions:
 #          flutter pub get
 
 
-#    - &get_logo
-#      name: Get logo image from logoUrl
-#      script: |
-#        mkdir -p assets/images/
-#        wget -O assets/images/logo.png $LOGO_URL
-#        flutter pub get
-#
+    - &get_logo
+      name: Get logo image from logoUrl
+      script: |
+        mkdir -p assets/images/
+        wget -O assets/images/logo.png $LOGO_URL
+        flutter pub get
+
 #    - &get_splash
 #      name: Get splash screen image from splash image from Url
 #      script: |
 #        mkdir -p assets/images/
 #        wget -O assets/images/splash.png $SPLASH
 #        flutter pub get
-#
-#    - &set_launcher_icons
-#      name: Generate Launcher Icons
-#      script: |
-#        flutter pub run flutter_launcher_icons:main
+
+    - &set_launcher_icons
+      name: Generate Launcher Icons
+      script: |
+        flutter pub run flutter_launcher_icons:main
 #
 #    - &set_splash_icons
 #      name: Add splash screen to build
@@ -116,9 +116,9 @@ workflows:
       scripts:
         - *pub_get
         - *debug_env
-#        - *get_logo
+        - *get_logo
 #        - *get_splash
-#        - *set_launcher_icons
+        - *set_launcher_icons
 #        - *set_splash_icons
         - *change_bundle_name
         - *change_app_name
