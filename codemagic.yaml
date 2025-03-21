@@ -71,7 +71,7 @@ definitions:
       name: Generate Launcher Icons
       script: |
         flutter pub run flutter_launcher_icons:main
-
+        flutter pub get
     - &set_splash_icons
       name: Add splash screen to build
       script: |
