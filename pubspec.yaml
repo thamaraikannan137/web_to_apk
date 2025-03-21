@@ -31,14 +31,19 @@ flutter_launcher_icons:
   min_sdk_android: 21 # android min sdk min:16, default 21
 
 flutter_native_splash:
+
   color: "#ffffff"
-  image: assets/images/splash.png
+  image: "assets/images/splash.png"
   android_gravity: fill
   ios_content_mode: scaleAspectFit
   fullscreen: true
-  branding: assets/images/splash.png
+  branding: "assets/images/splash.png"
   branding_mode: bottom
   web: false
+
+  android_12:
+    color: "#ffffff"
+    image: "assets/images/splash.png"
 
 flutter:
   uses-material-design: true

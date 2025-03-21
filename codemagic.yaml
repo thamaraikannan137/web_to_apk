@@ -60,24 +60,24 @@ definitions:
         wget -O assets/images/logo.png $LOGO_URL
         flutter pub get
 
-#    - &get_splash
-#      name: Get splash screen image from splash image from Url
-#      script: |
-#        mkdir -p assets/images/
-#        wget -O assets/images/splash.png $SPLASH
-#        flutter pub get
+    - &get_splash
+      name: Get splash screen image from splash image from Url
+      script: |
+        mkdir -p assets/images/
+        wget -O assets/images/splash.png $SPLASH
+        flutter pub get
 
     - &set_launcher_icons
       name: Generate Launcher Icons
       script: |
         flutter pub run flutter_launcher_icons:main
-#
-#    - &set_splash_icons
-#      name: Add splash screen to build
-#      script: |
-#        flutter pub run flutter_native_splash:create
-#        flutter pub get
-#
+
+    - &set_splash_icons
+      name: Add splash screen to build
+      script: |
+        flutter pub run flutter_native_splash:create
+        flutter pub get
+
     - &change_bundle_name
       name: Change bundle name
       script: |
@@ -117,9 +117,9 @@ workflows:
         - *pub_get
         - *debug_env
         - *get_logo
-#        - *get_splash
         - *set_launcher_icons
-#        - *set_splash_icons
+        - *get_splash
+        - *set_splash_icons
         - *change_bundle_name
         - *change_app_name
 #        - *google_json
