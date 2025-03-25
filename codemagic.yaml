@@ -100,10 +100,10 @@ definitions:
       script: |
         flutter build apk --debug --dart-define=WEB_URL="$WEB_URL"
 
-#    - &build_release_apk
-#      name: Build APK
-#      script: |
-#        flutter build apk --release --dart-define=WEB_URL="$WEB_URL"
+    - &build_release_apk
+      name: Build APK
+      script: |
+        flutter build apk --release --dart-define=WEB_URL="$WEB_URL"
     
 
 workflows:
@@ -129,4 +129,27 @@ workflows:
       artifacts:
         - *android_apk
 #        - *android_abb
+      publishing: *email_release
+    android-release-workflow:
+      name: Android release Workflow
+      max_build_duration: 60
+      instance_type: mac_mini_m2
+      environment:
+        flutter: stable
+      scripts:
+        - *pub_get
+        - *debug_env
+        - *get_logo
+        - *set_launcher_icons
+        - *get_splash
+        - *set_splash_icons
+        - *change_bundle_name
+        - *change_app_name
+        - *build_release_apk
+        #        - *google_json
+        #        - *build_abb
+#        - *build_debug_apk
+      artifacts:
+        - *android_apk
+      #        - *android_abb
       publishing: *email_release
