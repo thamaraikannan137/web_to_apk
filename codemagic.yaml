@@ -95,15 +95,15 @@ definitions:
 #      script: |
 #        flutter build appbundle --release --dart-define=WEB_URL=$WEB_URL
 
-    - &build_debug_apk
+#    - &build_debug_apk
+#      name: Build APK
+#      script: |
+#        flutter build apk --debug --dart-define=WEB_URL="$WEB_URL"
+
+    - &build_release_apk
       name: Build APK
       script: |
-        flutter build apk --debug --dart-define=WEB_URL="$WEB_URL"
-
-#    - &build_release_apk
-#      - name: Build APK
-#      - script: |
-#      - flutter build apk --release --dart-define=WEB_URL="$WEB_URL"
+        flutter build apk --release --dart-define=WEB_URL="$WEB_URL"
     
 
 workflows:
@@ -122,9 +122,10 @@ workflows:
         - *set_splash_icons
         - *change_bundle_name
         - *change_app_name
+        - *build_release_apk
 #        - *google_json
 #        - *build_abb
-        - *build_debug_apk
+#        - *build_debug_apk
       artifacts:
         - *android_apk
 #        - *android_abb
