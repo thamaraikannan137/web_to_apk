@@ -45,11 +45,13 @@ definitions:
         echo "ORG_NAME: $ORG_NAME"
         echo "WEB_URL: $WEB_URL"
         echo "SPLASH: $SPLASH"
+        echo "firebase_config_android: $firebase_config_android"
 
     - &google_json
       name: Get firebase config for android from Url
       script: |
           wget -O android/app/google-services.json $firebase_config_android
+          cat android/app/google-services.json
           flutter pub get
 
 
