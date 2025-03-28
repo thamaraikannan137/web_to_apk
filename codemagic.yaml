@@ -44,13 +44,13 @@ definitions:
         echo "APP_NAME: $APP_NAME"
         echo "ORG_NAME: $ORG_NAME"
         echo "WEB_URL: $WEB_URL"
-#        echo "sSPLASH: $SPLASH"
+        echo "SPLASH: $SPLASH"
 
-#    - &google_json
-#      name: Get firebase config for android from Url
-#      script: |
-#          wget -O android/app/google-services.json $firebase_config_android
-#          flutter pub get
+    - &google_json
+      name: Get firebase config for android from Url
+      script: |
+          wget -O android/app/google-services.json $firebase_config_android
+          flutter pub get
 
 
     - &get_logo
@@ -146,7 +146,7 @@ workflows:
         - *change_bundle_name
         - *change_app_name
         - *build_release_apk
-        #        - *google_json
+        - *google_json
         #        - *build_abb
 #        - *build_debug_apk
       artifacts:
